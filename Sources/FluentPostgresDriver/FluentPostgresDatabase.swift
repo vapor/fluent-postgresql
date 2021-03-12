@@ -61,11 +61,13 @@ extension _FluentPostgresDatabase: Database {
             guard !e.createCases.isEmpty else {
                 return self.eventLoop.makeSucceededFuture(())
             }
-            let builder = self.sql().alter(enum: e.name)
-            for create in e.createCases {
-                _ = builder.add(value: create)
-            }
-            return builder.run()
+
+            return database.eventLoop.flatten(e.createCases.map { create in
+                sql()
+                    .alter(enum: e.name)
+                    .add(value: create)
+                    .run()
+            })
         case .delete:
             return self.sql().drop(enum: e.name).run()
         }

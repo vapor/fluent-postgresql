@@ -11,7 +11,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/async-kit.git", from: "1.2.0"),
-        .package(url: "https://github.com/vapor/fluent-kit.git", from: "1.0.0"),
+        .package(url: "https://github.com/vapor/fluent-kit.git", .branch("feature/test-adding-multiple-enum-cases")),
         .package(url: "https://github.com/vapor/postgres-kit.git", from: "2.3.0"),
     ],
     targets: [
