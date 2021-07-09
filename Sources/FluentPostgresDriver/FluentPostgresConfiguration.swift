@@ -31,7 +31,9 @@ extension DatabaseConfigurationFactory {
         return .postgres(
             configuration: configuration,
             maxConnectionsPerEventLoop: maxConnectionsPerEventLoop,
-            connectionPoolTimeout: connectionPoolTimeout
+            connectionPoolTimeout: connectionPoolTimeout,
+            encoder: encoder,
+            decoder: decoder
         )
     }
 
@@ -57,7 +59,9 @@ extension DatabaseConfigurationFactory {
                 tlsConfiguration: tlsConfiguration
             ),
             maxConnectionsPerEventLoop: maxConnectionsPerEventLoop,
-            connectionPoolTimeout: connectionPoolTimeout
+            connectionPoolTimeout: connectionPoolTimeout,
+            encoder: encoder,
+            decoder: decoder
         )
     }
 
